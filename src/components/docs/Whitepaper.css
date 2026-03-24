@@ -204,11 +204,31 @@ section p {
 @media (max-width: 900px) {
   .whitepaper-content {
     grid-template-columns: 1fr;
+    padding-top: 6rem;
+    gap: 2rem;
   }
   .whitepaper-toc {
     display: none;
   }
   .article-header h1 {
-    font-size: 2.25rem;
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+  .article-footer {
+    padding: 2rem;
+  }
+  .problem-grid-doc {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .whitepaper-nav {
+    padding: 0 1rem;
+  }
+  .nav-actions {
+    display: none;
+  }
+  .whitepaper-logo .doc-type {
+    display: none;
   }
 }

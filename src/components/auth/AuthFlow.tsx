@@ -28,6 +28,10 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete, onBack }) => {
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+
   const handleNext = () => {
     setLoading(true);
     // Simulate API delay
@@ -83,13 +87,27 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete, onBack }) => {
             <p className="step-desc">Start your journey into global equity markets.</p>
             <div className="input-group">
               <label><Mail size={16} /> Email Address</label>
-              <input type="email" placeholder="name@company.com" />
+              <input 
+                type="email" 
+                placeholder="name@company.com" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="input-group">
               <label><Lock size={16} /> Password</label>
-              <input type="password" placeholder="••••••••" />
+              <input 
+                type="password" 
+                placeholder="••••••••" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <button className="btn-primary w-full" onClick={handleNext} disabled={loading}>
+            <button 
+              className="btn-primary w-full" 
+              onClick={handleNext} 
+              disabled={loading || !email || !password}
+            >
               {loading ? 'Creating Account...' : 'Continue'} <ArrowRight size={18} />
             </button>
           </div>
@@ -103,7 +121,12 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete, onBack }) => {
             <div className="input-row">
               <div className="input-group">
                 <label><User size={16} /> Full Name</label>
-                <input type="text" placeholder="Ibrahim Adebisi" />
+                <input 
+                  type="text" 
+                  placeholder="Tactful Cipher" 
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
               </div>
             </div>
             <div className="input-group">
@@ -115,7 +138,11 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete, onBack }) => {
                 <option>United Arab Emirates</option>
               </select>
             </div>
-            <button className="btn-primary w-full" onClick={handleNext} disabled={loading}>
+            <button 
+              className="btn-primary w-full" 
+              onClick={handleNext} 
+              disabled={loading || !fullName}
+            >
               Next Step <ArrowRight size={18} />
             </button>
           </div>

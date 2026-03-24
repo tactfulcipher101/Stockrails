@@ -13,11 +13,14 @@ import {
   TrendingUp,
   Lock,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  Menu,
+  X
 } from 'lucide-react';
 
 const App: React.FC = () => {
   const [view, setView] = useState<'landing' | 'auth' | 'dashboard' | 'whitepaper'>('landing');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   if (view === 'dashboard') {
     return <Dashboard onBack={() => setView('landing')} />;
@@ -39,13 +42,16 @@ const App: React.FC = () => {
           <div className="logo">
             <span className="logo-text">STOCK<span className="text-primary">RAIL</span></span>
           </div>
-          <div className="nav-links">
-            <a href="#the-problem">The Problem</a>
-            <a href="#solution">Our Solution</a>
-            <a href="#infrastructure">Infrastructure</a>
-            <a href="#compliance">Compliance</a>
-            <button className="btn-primary" onClick={() => setView('auth')}>Launch Dashboard</button>
+          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            <a href="#the-problem" onClick={() => setMobileMenuOpen(false)}>The Problem</a>
+            <a href="#solution" onClick={() => setMobileMenuOpen(false)}>Our Solution</a>
+            <a href="#infrastructure" onClick={() => setMobileMenuOpen(false)}>Infrastructure</a>
+            <a href="#compliance" onClick={() => setMobileMenuOpen(false)}>Compliance</a>
+            <button className="btn-primary" onClick={() => { setView('auth'); setMobileMenuOpen(false); }}>Launch Dashboard</button>
           </div>
+          <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
       </nav>
 
@@ -66,6 +72,26 @@ const App: React.FC = () => {
             <button className="btn-secondary btn-large" onClick={() => setView('whitepaper')}>
               Read Whitepaper
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Market Reach Section */}
+      <section className="market-reach">
+        <div className="section-header">
+          <span className="text-primary">GLOBAL ACCESS</span>
+          <h2>One Infrastructure. Every Asset Class.</h2>
+          <p>Deploy capital across a unified bridge into the world's most liquid markets.</p>
+        </div>
+        <div className="market-ticker">
+          <div className="ticker-track">
+            {['AAPL +1.2%', 'TSLA -2.4%', 'NVDA +4.8%', 'MSFT +0.5%', 'AMZN +1.1%', 'META +2.1%', 'GOOGL +0.9%', 'AMD +2.3%'].map((tick, i) => (
+              <div key={i} className="ticker-item">{tick}</div>
+            ))}
+            {/* Duplicate for seamless scroll */}
+            {['AAPL +1.2%', 'TSLA -2.4%', 'NVDA +4.8%', 'MSFT +0.5%', 'AMZN +1.1%', 'META +2.1%', 'GOOGL +0.9%', 'AMD +2.3%'].map((tick, i) => (
+              <div key={i + 'd'} className="ticker-item">{tick}</div>
+            ))}
           </div>
         </div>
       </section>
