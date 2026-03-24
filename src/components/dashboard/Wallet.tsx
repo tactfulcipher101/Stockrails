@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import { Wallet as WalletIcon, ArrowUpRight, ArrowDownLeft, ShieldCheck, Globe, ArrowLeft } from 'lucide-react';
+import { ArrowUpRight, ArrowDownLeft, ShieldCheck, Globe, ArrowLeft } from 'lucide-react';
 
 interface WalletProps {
   cashBalance: number;

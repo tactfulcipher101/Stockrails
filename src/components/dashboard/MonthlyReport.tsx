@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import { FileText, Download, ChevronRight, Calendar } from 'lucide-react';
+import { FileText, Download, Calendar } from 'lucide-react';
 
 interface MonthlyReportProps {
   onExport: (month: string) => void;

@@ -19,6 +19,7 @@ import {
   LogOut,
   X,
   ArrowRight,
+  ArrowLeft,
   Info,
   ShieldCheck
 } from 'lucide-react';

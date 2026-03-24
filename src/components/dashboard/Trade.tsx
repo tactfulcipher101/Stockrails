@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import './Dashboard.css';
-import { ArrowRight, Search, X, ArrowUpRight, TrendingDown, ArrowLeft } from 'lucide-react';
+import { ArrowRight, Search, X, ArrowLeft } from 'lucide-react';
 
 interface Position {
   symbol: string;
@@ -49,8 +49,7 @@ const Trade: React.FC<TradeProps> = ({ cashBalance, positions, onTrade, onBack }
     // Optional: Keep selected asset or clear it
   };
 
-  // Calculate max buy/sell
-  const maxBuy = selectedAsset ? Math.floor(cashBalance / selectedAsset.price) : 0;
+  // Calculate max sell
   const currentPosition = positions.find(p => p.symbol === selectedAsset?.symbol);
   const maxSell = currentPosition ? currentPosition.shares : 0;
 

@@ -6,7 +6,6 @@ import {
   RefreshCw, 
   CheckCircle2, 
   AlertCircle, 
-  Wallet,
   X,
   ExternalLink,
   ArrowLeft
@@ -38,7 +37,7 @@ const WithdrawFlow: React.FC<WithdrawFlowProps> = ({ onClose, onWithdrawComplete
         { msg: '✓ Funds broadcast to Ethereum network (Tx: 0x8a2...3f1)', delay: 3400 },
       ];
 
-      const timeouts: NodeJS.Timeout[] = [];
+      const timeouts: any[] = [];
 
       sequence.forEach(({ msg, delay }) => {
         const timeout = setTimeout(() => {

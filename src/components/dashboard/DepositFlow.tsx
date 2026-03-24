@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './DepositFlow.css';
 import { 
-  Wallet, 
   ArrowRight, 
   ShieldCheck, 
   RefreshCw, 
@@ -38,7 +37,7 @@ const DepositFlow: React.FC<DepositFlowProps> = ({ onClose, onDepositComplete })
         { msg: 'Settling to brokerage sub-account...', delay: 7500 },
       ];
 
-      let timeouts: NodeJS.Timeout[] = [];
+      let timeouts: any[] = [];
 
       sequence.forEach(({ msg, delay }) => {
         const timeout = setTimeout(() => {

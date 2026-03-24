@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import { User, Shield, Bell, Lock, Globe, ArrowLeft } from 'lucide-react';
+import { User, Shield, Bell, ArrowLeft } from 'lucide-react';
 
 interface SettingsProps {
   onBack: () => void;
